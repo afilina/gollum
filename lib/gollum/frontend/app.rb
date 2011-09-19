@@ -122,6 +122,13 @@ module Precious
       @versions = @page.versions :page => @page_num
       mustache :history
     end
+    
+    get '/timeline' do
+      @name     = 'timeline'
+      wiki      = Gollum::Wiki.new(settings.gollum_path, settings.wiki_options)
+      @entries  = wiki.entries
+      mustache :timeline
+    end
 
     post '/compare/:name' do
       @versions = params[:versions] || []

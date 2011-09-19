@@ -549,6 +549,18 @@ module Gollum
         []
       end
     end
+    
+    # Fill an array with a list of entries in chronological order.
+    #
+    # max_count - The number of entries to retrieve.
+    #
+    # Returns a flat Array of commit entries.
+    def entries(max_count = 10)
+      options = {:pretty => 'raw', :max_count => max_count}
+      args = [@page_file_dir]
+      log = repo.git.native "log", options, "--", args
+      return Grit::Commit.list_from_string(repo, log)
+    end
 
     # Creates a reverse diff for the given SHAs on the given Gollum::Page.
     #

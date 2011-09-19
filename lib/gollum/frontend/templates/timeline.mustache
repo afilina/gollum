@@ -1,0 +1,38 @@
+<div id="wiki-wrapper" class="history">
+<div id="head">
+  <h1>{{title}}</h1>
+  {{>searchbar}}
+</div>
+<div id="wiki-history">
+  
+  <table>
+    <tbody>
+      {{#commits}}
+      <tr>
+        <td class="author">
+          <a href="javascript:void(0)">
+            <img src="http://www.gravatar.com/avatar/{{gravatar}}?s=16"
+             alt="avatar: {{author}}" class="mini-gravatar">
+            <span class="username">{{author}}</span>
+          </a>
+        </td>
+        <td class="commit-name">
+          <span class="time-elapsed">{{date}}:</span>&nbsp;
+          {{message}}
+          [<a href="/{{page_link}}" title="View page">{{page_name}}</a>]
+        </td>
+      </tr>
+      {{/commits}}
+      
+    </tbody>
+  </table>
+
+</div>
+<div id="footer">
+  <ul class="actions">
+    <!-- only show this button if we have more than 20 revisions -->
+    <li class="minibutton"><a href="#"
+       class="action-back-to-top">Back to Top</a></li>
+  </ul>
+</div>
+</div>
